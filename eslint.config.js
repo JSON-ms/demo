@@ -30,7 +30,17 @@ export default [
           allowTernary: true,
         },
       ],
+      '@typescript-eslint/no-explicit-any': 'off',
       'vue/multi-word-component-names': 'off',
+      'vue/multiline-html-element-content-newline': 'off',
+      'vue/max-attributes-per-line': ['error', {
+        'singleline': {
+          'max': 5
+        },
+        'multiline': {
+          'max': 1
+        }
+      }]
     }
   }
 ]
