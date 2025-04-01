@@ -19,7 +19,7 @@
         </v-btn>
       </template>
       <v-carousel-item
-        v-for="presentation in data.home.presentation"
+        v-for="(presentation, presentationIdx) in data.home.presentation"
         :key="presentation.hash"
       >
         <div style="max-width: 66%; margin: 0 auto" class="d-flex flex-column fill-height justify-center align-center text-center">
@@ -30,7 +30,7 @@
             {{ presentation.body[locale] }} <!-- HANDLE MARKDOWN -->
           </p>
           <template v-if="presentation.cta[locale]">
-            <v-btn v-if="slide < data.home.presentation.length - 1" class="mt-6" size="x-large" variant="outlined" @click="onCtaClick">
+            <v-btn v-if="presentationIdx < data.home.presentation.length - 1" class="mt-6" size="x-large" variant="outlined" @click="onCtaClick">
               {{ presentation.cta[locale] }}
             </v-btn>
             <h1 v-else class="mt-6">

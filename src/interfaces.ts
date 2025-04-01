@@ -1,5 +1,7 @@
 export type JmsLocale = 'en-US' | 'es-MX'
 
+export type JmsSection = 'home'
+
 export type JmsEnumColors = 'primary' | 'secondary'
 
 export type JmsLocaleSet<T> = {
@@ -53,8 +55,10 @@ export interface JmsObject {
   home: JmsHome
 }
 
-export const defaultJmsObject: JmsObject = {
+const defaultJmsObject: JmsObject = {
   "home": {
     "presentation": []
   }
 }
+
+export default defaultJmsObject

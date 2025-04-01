@@ -1,9 +1,12 @@
 import JsonMs from '@jsonms/vue3'
-import { type JmsLocale, type JmsObject, defaultJmsObject } from '@/interfaces';
-import {inject} from 'vue';
+import { inject } from 'vue';
+import defaultJmsObject, { type JmsSection, type JmsLocale, type JmsObject } from '@/interfaces';
 import { type JSONmsProvider } from '@jsonms/vue3';
 
-export default JsonMs<JmsObject, JmsLocale>(defaultJmsObject)
+const defaultSection: JmsSection = 'home';
+const defaultLocale: JmsLocale = 'en-US';
+
+export default JsonMs<JmsObject, JmsLocale>(defaultJmsObject, defaultSection, defaultLocale)
 
 type JmsProviderSet = JSONmsProvider<JmsObject, JmsLocale, string>
 
@@ -14,7 +17,7 @@ export const useJsonMs = (): JmsProviderSet => {
   }
   return {
     data: ref(defaultJmsObject),
-    locale: ref('en-US'),
-    section: ref('home'),
+    section: ref(defaultSection),
+    locale: ref(defaultLocale),
   }
 }
