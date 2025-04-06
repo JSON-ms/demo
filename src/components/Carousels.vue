@@ -65,7 +65,11 @@ const slideColor = computed((): string => {
 
 watch(() => slide.value, () => {
   if (data.value.home.presentation[slide.value]) {
-    window.parent.postMessage({name: 'jsonms', type: 'commands', data: JSON.stringify(data.value.home.presentation[slide.value].commands) }, );
+    window.parent.postMessage({
+      name: 'jsonms',
+      type: 'commands',
+      data: JSON.stringify(data.value.home.presentation[slide.value].commands)
+    }, '*');
   }
 })
 </script>

@@ -6,9 +6,9 @@ import { type JSONmsProvider } from '@jsonms/vue3';
 const defaultSection: JmsSection = 'home';
 const defaultLocale: JmsLocale = 'en-US';
 
-export default JsonMs<JmsObject, JmsLocale>(defaultJmsObject, defaultSection, defaultLocale)
+export default JsonMs<JmsObject, JmsSection, JmsLocale>(defaultJmsObject, defaultSection, defaultLocale)
 
-type JmsProviderSet = JSONmsProvider<JmsObject, JmsLocale, string>
+type JmsProviderSet = JSONmsProvider<JmsObject, JmsSection, JmsLocale>
 
 export const useJsonMs = (): JmsProviderSet => {
   const jms = inject<JmsProviderSet>('jms');
