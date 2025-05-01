@@ -1,0 +1,288 @@
+{
+  "global": {
+    "title": "Demo Preview",
+    "copyright": "JSON.ms v1.2.0. Licensed under the BSD-3-Clause.",
+    "logo": "http://localhost:3000/favicon.ico",
+    "preview": "http://localhost:3001"
+  },
+  "locales": {
+    "en-US": "English (US)",
+    "es-MX": "Spanish (Mexico)"
+  },
+  "enums": {
+    "colors": {
+      "primary": "Blueish",
+      "secondary": "Greenish"
+    },
+    "gender": {
+      "male": "Male",
+      "female": "Female"
+    }
+  },
+  "schemas": {
+    "meta": {
+      "title": {
+        "type": "string",
+        "label": "Title"
+      },
+      "description": {
+        "type": "string",
+        "label": "Description"
+      }
+    }
+  },
+  "sections": {
+    "home": {
+      "label": "Presentation",
+      "icon": "mdi-view-carousel-outline",
+      "fields": {
+        "presentation": {
+          "type": "array",
+          "label": "Slides",
+          "fields": {
+            "title": {
+              "type": "i18n",
+              "label": "Title",
+              "required": true,
+              "fields": {}
+            },
+            "body": {
+              "type": "i18n:markdown",
+              "label": "Body",
+              "fields": {}
+            },
+            "cta": {
+              "type": "i18n",
+              "label": "Call-to-action",
+              "required": true,
+              "fields": {}
+            },
+            "color": {
+              "type": "radio",
+              "inline": true,
+              "items": "enums.colors",
+              "label": "Background color",
+              "required": true,
+              "fields": {}
+            },
+            "commands": {
+              "type": "select",
+              "multiple": true,
+              "label": "Optional command(s)",
+              "items": {
+                "openDrawer": "Open drawer",
+                "closeDrawer": "Close drawer",
+                "openAdvanced": "Open advanced",
+                "closeAdvanced": "Close advanced",
+                "showData": "Show data",
+                "showSettings": "Show settings",
+                "showDocs": "Show documentation",
+                "setMobile": "Set mobile",
+                "setDesktop": "Set desktop",
+                "hideDevice": "Hide device"
+              },
+              "fields": {}
+            }
+          },
+          "items": {}
+        }
+      },
+      "type": "unknown"
+    },
+    "playground": {
+      "label": "Playground",
+      "icon": "mdi-toy-brick-outline",
+      "prepend": "In this section, we created various fields and played with their attributes to show you what you can do with JSON.ms. Follow along by opening the editor by click on \"Advanced\" in the Toolbar.",
+      "fields": {
+        "text": {
+          "type": "string",
+          "label": "String",
+          "rules": [
+            {
+              "regex": "/^abc/",
+              "message": "The string must start with abc"
+            },
+            {
+              "regex": "/123$/",
+              "message": "The string must end with 123"
+            }
+          ],
+          "prepend": "For instance, here's the most basic field.",
+          "hint": "You can add a hint or a description below each field like so.",
+          "fields": {}
+        },
+        "textWithIcon": {
+          "default": "This is a default value",
+          "type": "string",
+          "label": "String with icon",
+          "prepend": "But we could also decorate this field by adding icons and inner text.",
+          "icon": "mdi-earth",
+          "append-inner": "Inner text here",
+          "hint": "Use properties \"icon\", \"prepend\", \"prepend-inner\", \"append\" and \"append-inner\" to add content around and within the field.",
+          "fields": {}
+        },
+        "i18nRequired": {
+          "type": "i18n",
+          "label": "Translatable field",
+          "required": true,
+          "prepend": "What if you want a translatable field which is required? Just use type \"i18n\" and \"required: true\".",
+          "hint": "Have you noticed the translatable field at the end of this field? This is how you recognize that this field is multilingual.",
+          "fields": {}
+        },
+        "i18nTextarea": {
+          "type": "i18n:textarea",
+          "label": "Translatable textarea",
+          "prepend": "You can make any field aside from \"node\" translatable. For instance, this type \"textarea\" have being converted to a multilingual field, simply by prepending the type with \"i18n:textarea\".",
+          "fields": {}
+        },
+        "i18nRating": {
+          "type": "i18n:rating",
+          "label": "Translatable ratings",
+          "prepend": "For instance, here's a translatable rating field \"i18n:rating\". Pretty simple, right?",
+          "fields": {}
+        },
+        "conditionalSwitch": {
+          "type": "switch",
+          "prepend": "You can only show/hide fields based on conditions. For instance, the hidden field has a conditional attribute that expect the following switch to be activated in order to show up.",
+          "label": "Show hidden field",
+          "fields": {}
+        },
+        "hiddenField1": {
+          "type": "slider",
+          "label": "I'm visible now!",
+          "conditional": "this.conditionalSwitch == true",
+          "fields": {}
+        },
+        "hiddenField2": {
+          "type": "range",
+          "label": "I'm a range",
+          "conditional": "this.conditionalSwitch == true",
+          "fields": {}
+        },
+        "list": {
+          "type": "node",
+          "label": "List",
+          "prepend": "OK, now let's see how to create a node (group). To do so, we simply set a field's type to \"node\". This is the only type of field that is not translatable.",
+          "fields": {
+            "select": {
+              "type": "select",
+              "label": "Gender",
+              "prepend": "Here's a simple list which contains two values: Male and Female. To define the items, add a \"items\" property with a list of key: value.",
+              "items": {
+                "male": "Male",
+                "female": "Female"
+              },
+              "fields": {}
+            },
+            "radio": {
+              "type": "radio",
+              "label": "Enums",
+              "prepend": "You can also define enums, which are predefined at the root level of the interface. Open the advanced editor and look for \"enums\". Use \"enums.[key]\" as items' value to use the enums. In this case, we used the enum like so: \"items: enums.gender\".",
+              "items": "enums.gender",
+              "fields": {}
+            },
+            "checkbox": {
+              "type": "checkbox",
+              "label": "Reuse of enums (multiple)",
+              "multiple": true,
+              "prepend": "The following field is reusing enums.gender as checkbox components, simply by adding a \"multiple: true\" in addition to \"type: checkbox\".",
+              "items": "enums.gender",
+              "fields": {}
+            }
+          }
+        },
+        "arrays": {
+          "type": "node",
+          "label": "Arrays",
+          "prepend": "OK, so now let's see how to create arrays.",
+          "fields": {
+            "array": {
+              "type": "array",
+              "label": "Person",
+              "prepend": "Let's pretend we want to define a list of people. We need to define a field with a type \"array\". Now click on \"Add\".",
+              "fields": {
+                "firstName": {
+                  "type": "string",
+                  "label": "First name",
+                  "fields": {}
+                },
+                "lastName": {
+                  "type": "string",
+                  "label": "Last name",
+                  "fields": {}
+                },
+                "gender": {
+                  "type": "radio",
+                  "label": "Gender",
+                  "items": "enums.gender",
+                  "fields": {}
+                },
+                "picture": {
+                  "type": "file",
+                  "label": "Picture",
+                  "accept": "image/*",
+                  "fields": {}
+                }
+              },
+              "items": {}
+            },
+            "i18nArray": {
+              "type": "i18n:array",
+              "label": "Translatable array",
+              "prepend": "Arrays can be translated as well. It is useful when you need a different list for each languages. Remember, to make any field translatable (but node), prefix the field with i18n. In this case: \"i18n:array\".",
+              "fields": {
+                "title": {
+                  "type": "string",
+                  "label": "Title",
+                  "prepend": "When using a translatable array, you must NOT set any of the inner fields translatable.",
+                  "fields": {}
+                }
+              },
+              "items": {}
+            }
+          }
+        },
+        "files": {
+          "type": "node",
+          "label": "Files",
+          "prepend": "Now let's talk about files.",
+          "fields": {
+            "file": {
+              "type": "file",
+              "label": "File",
+              "prepend": "It's as simple as adding \"type: file\" to your field.",
+              "fields": {}
+            },
+            "acceptImages": {
+              "type": "file",
+              "label": "Image only",
+              "accept": "image/*",
+              "prepend": "You can use the \"accept\" parameter and use any value supported by HTML. Example: \".png,.jpg,image/*,application/msword\". In this case, we'll use \"images/*\".",
+              "fields": {}
+            },
+            "multiple": {
+              "type": "file",
+              "label": "Multiple files",
+              "multiple": true,
+              "prepend": "You can also allow multiple files to be added.",
+              "fields": {}
+            }
+          }
+        },
+        "markdown": {
+          "type": "markdown",
+          "label": "Markdown",
+          "prepend": "There are other fields as well that you can use. Let's check them out. First, here's a markdown editor.",
+          "fields": {}
+        },
+        "date": {
+          "type": "date",
+          "label": "Date",
+          "prepend": "And here's a date selector:",
+          "fields": {}
+        }
+      },
+      "type": "unknown"
+    }
+  }
+}

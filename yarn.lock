@@ -251,6 +251,18 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.0.tgz#3188bcb273a414b0d215fd22a58540b989b9409a"
   integrity sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==
 
+"@jsonms/js@^1.0.0":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@jsonms/js/-/js-1.0.7.tgz#353efe6724789386fb723eb5615a08df4d253d42"
+  integrity sha512-/7Ru4cxsOjSjrIBONUA/mbdZYcYKPANbL8zPR0DjsIN4qaMuiWD7laQlHTGNphKhuQ4lDb2qMzAO66E9lgsV5g==
+
+"@jsonms/vue3@^1.0.7":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@jsonms/vue3/-/vue3-1.0.8.tgz#05ed3b43f1d2cab947f38fe37b426e84bc9fbcf8"
+  integrity sha512-piYGFz0GeQ1z4dc3ZAs3AawCEAAa+nEgxWKFS8RxPb9EH72Rz2thLSbph/YWga3xjvpdywsdknUJ2d0PINg42w==
+  dependencies:
+    "@jsonms/js" "^1.0.0"
+
 "@mdi/font@7.4.47":
   version "7.4.47"
   resolved "https://registry.yarnpkg.com/@mdi/font/-/font-7.4.47.tgz#2ae522867da3a5c88b738d54b403eb91471903af"

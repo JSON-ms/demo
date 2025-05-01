@@ -18,7 +18,5 @@ export function registerPlugins (app: App) {
     .use(vuetify)
     .use(router)
     .use(pinia)
-    .use(jsonMs, {
-      router,
-    })
+    .use(jsonMs)
 }
