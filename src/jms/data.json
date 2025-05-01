@@ -1,0 +1,138 @@
+{
+  "home": {
+    "presentation": [
+      {
+        "title": {
+          "en-US": "Generate an admin panel from a YAML interface that communicates with a remote server using JSON.",
+          "es-MX": "Genera un panel de administración a partir de una interfaz YAML que se comunica con un servidor remoto utilizando JSON."
+        },
+        "body": {
+          "en-US": "Keep your data safe on your server, and feel free to download your JSON file whenever you need it—no obligations! Enjoy stunning, customizable interfaces that empower you to edit your website's content without being tied to our technology!",
+          "es-MX": "Mantén tus datos seguros en tu servidor y siéntete libre de descargar tu archivo JSON siempre que lo necesites, ¡sin obligaciones! Disfruta de impresionantes interfaces personalizables que te permiten editar el contenido de tu sitio web sin estar atado a nuestra tecnología."
+        },
+        "cta": {
+          "en-US": "Let's see how it works!",
+          "es-MX": "¡Veamos cómo funciona!"
+        },
+        "color": "primary",
+        "commands": [],
+        "hash": "hoqCTZrB"
+      },
+      {
+        "title": {
+          "en-US": "The form on the right is generated dynamically from the YAML interface below. You can modify the YAML to see the form update in real time.",
+          "es-MX": "El formulario a la derecha se genera dinámicamente a partir de la interfaz YAML a continuación. Puedes modificar el YAML para ver el formulario actualizarse en tiempo real."
+        },
+        "body": {
+          "en-US": "",
+          "es-MX": ""
+        },
+        "cta": {
+          "en-US": "Got it!",
+          "es-MX": "¡Entendido!"
+        },
+        "color": "secondary",
+        "commands": [
+          "showData",
+          "openAdvanced",
+          "setDesktop"
+        ],
+        "hash": "1l3lbx81"
+      },
+      {
+        "title": {
+          "en-US": "On the left side, you'll find sections that you can also control through the YAML template.",
+          "es-MX": "En el lado izquierdo, encontrarás secciones que también puedes controlar a través de la plantilla YAML."
+        },
+        "body": {
+          "en-US": null,
+          "es-MX": null
+        },
+        "cta": {
+          "en-US": "Very nice!",
+          "es-MX": "¡Muy bien!"
+        },
+        "color": "secondary",
+        "commands": [
+          "openDrawer"
+        ],
+        "hash": "UZYD8ILH"
+      },
+      {
+        "title": {
+          "en-US": "To assist you in structuring your YAML interface and setting up your server, we have provided clear documentation on the right side.",
+          "es-MX": "Para ayudarte a estructurar tu interfaz YAML y configurar tu servidor, hemos proporcionado documentación clara en el lado derecho."
+        },
+        "body": {
+          "en-US": null,
+          "es-MX": null
+        },
+        "cta": {
+          "en-US": "Alright!",
+          "es-MX": "¡Está bien!"
+        },
+        "color": "secondary",
+        "commands": [
+          "closeDrawer",
+          "openAdvanced",
+          "showDocs"
+        ],
+        "hash": "KLLhfqMF"
+      },
+      {
+        "title": {
+          "en-US": "Make sure to explore the various examples provided in the sections area!",
+          "es-MX": "¡Asegúrate de explorar los diversos ejemplos proporcionados en el área de secciones!"
+        },
+        "body": {
+          "en-US": "Also remember that if you would rather run your own instance of JSON.ms, visit our GitHub page, as it is open-source.",
+          "es-MX": "También recuerda que si prefieres ejecutar tu propia instancia de JSON.ms, visita nuestra página de GitHub, ya que es de código abierto."
+        },
+        "cta": {
+          "en-US": "Enjoy! :)",
+          "es-MX": "¡Disfruta! :)"
+        },
+        "color": "secondary",
+        "commands": [
+          "showData"
+        ],
+        "hash": "hHuFCqwA"
+      }
+    ]
+  },
+  "playground": {
+    "text": null,
+    "textWithIcon": null,
+    "i18nRequired": {
+      "en-US": "",
+      "es-MX": ""
+    },
+    "i18nTextarea": {
+      "en-US": null,
+      "es-MX": null
+    },
+    "i18nRating": null,
+    "conditionalSwitch": true,
+    "hiddenField1": 50,
+    "hiddenField2": [
+      25,
+      90
+    ],
+    "list": {
+      "select": null,
+      "radio": null,
+      "checkbox": []
+    },
+    "arrays": {
+      "array": [],
+      "i18nArray": []
+    },
+    "files": {
+      "file": null,
+      "acceptImages": null,
+      "multiple": []
+    },
+    "markdown": null,
+    "date": null
+  }
+}

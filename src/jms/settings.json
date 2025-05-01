@@ -1,0 +1,14 @@
+{
+  "uploadMaxSize": "2048M",
+  "postMaxSize": "2048M",
+  "publicUrl": "http://localhost:9001/file/read/",
+  "version": "1.0.16",
+  "supportedFeatures": [
+    "data/get",
+    "data/update",
+    "file/list",
+    "file/read",
+    "file/upload",
+    "file/delete"
+  ]
+}

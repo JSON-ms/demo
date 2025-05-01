@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { useJsonMs } from '@/plugins/jsonms';
+import {useJsonMs} from "@/plugins/jsonms";
 
 const slide = ref(0);
 const { data, locale } = useJsonMs();
