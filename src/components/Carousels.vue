@@ -77,7 +77,7 @@ const slideColor = computed((): string => {
 function getYoutubeUrl(presentation: JmsHomePresentationItems) {
   if (presentation.youtube) {
     const code = getYoutubeCode(presentation.youtube);
-    return 'https://www.youtube.com/embed/' + code + '?controls=0';
+    return 'https://www.youtube.com/embed/' + code + '?controls=0&rel=0';
   }
 }
 

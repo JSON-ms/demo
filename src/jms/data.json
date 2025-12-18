@@ -3,20 +3,22 @@
     "presentation": [
       {
         "title": {
-          "en-US": "Generate an admin panel from a YAML interface that communicates with a remote server using JSON.",
-          "es-MX": "Genera un panel de administración a partir de una interfaz YAML que se comunica con un servidor remoto utilizando JSON."
+          "en-US": "Generate admin panels from a YAML interface",
+          "es-MX": "Genera un panel de administración a partir de una interfaz YAML"
         },
         "body": {
-          "en-US": "Keep your data safe on your server, and feel free to download your JSON file whenever you need it—no obligations! Enjoy stunning, customizable interfaces that empower you to edit your website's content without being tied to our technology!",
+          "en-US": "Keep your data safe on your server, and feel free to download your JSON file whenever you need it, no obligations! Enjoy stunning, customizable interfaces that empower you to edit your website's content without being tied to our technology!",
           "es-MX": "Mantén tus datos seguros en tu servidor y siéntete libre de descargar tu archivo JSON siempre que lo necesites, ¡sin obligaciones! Disfruta de impresionantes interfaces personalizables que te permiten editar el contenido de tu sitio web sin estar atado a nuestra tecnología."
         },
         "cta": {
           "en-US": "Let's see how it works!",
           "es-MX": "¡Veamos cómo funciona!"
         },
-        "color": "primary",
+        "color": "white",
         "commands": [],
-        "hash": "hoqCTZrB"
+        "hash": "VwRdQHe9",
+        "youtube": "https://www.youtube.com/watch?v=QbzHaJ3GeJM",
+        "type": "youtube"
       },
       {
         "title": {
@@ -37,7 +39,8 @@
           "openAdvanced",
           "setDesktop"
         ],
-        "hash": "1l3lbx81"
+        "hash": "Q5Opfw4N",
+        "type": "text"
       },
       {
         "title": {
@@ -56,11 +59,12 @@
         "commands": [
           "openDrawer"
         ],
-        "hash": "UZYD8ILH"
+        "hash": "cJnL3WdH",
+        "type": "text"
       },
       {
         "title": {
-          "en-US": "To assist you in structuring your YAML interface and setting up your server, we have provided clear documentation on the right side.",
+          "en-US": "To assist you in structuring your YAML interface and setting up your server, we have provided documentation on the right side.",
           "es-MX": "Para ayudarte a estructurar tu interfaz YAML y configurar tu servidor, hemos proporcionado documentación clara en el lado derecho."
         },
         "body": {
@@ -77,7 +81,8 @@
           "openAdvanced",
           "showDocs"
         ],
-        "hash": "KLLhfqMF"
+        "hash": "tCNArmZX",
+        "type": "text"
       },
       {
         "title": {
@@ -96,13 +101,15 @@
         "commands": [
           "showData"
         ],
-        "hash": "hHuFCqwA"
+        "hash": "AZYlDD7n",
+        "type": "text"
       }
     ]
   },
   "playground": {
     "text": null,
     "textWithIcon": null,
+    "textDefault": "A default value",
     "i18nRequired": {
       "en-US": "",
       "es-MX": ""
@@ -111,12 +118,13 @@
       "en-US": null,
       "es-MX": null
     },
+    "textRules": null,
     "i18nRating": null,
-    "conditionalSwitch": true,
+    "conditionalSwitch": null,
     "hiddenField1": 50,
     "hiddenField2": [
       25,
-      90
+      75
     ],
     "list": {
       "select": null,
@@ -125,7 +133,10 @@
     },
     "arrays": {
       "array": [],
-      "i18nArray": []
+      "i18nArray": {
+        "en-US": [],
+        "es-MX": []
+      }
     },
     "files": {
       "file": null,
@@ -133,6 +144,10 @@
       "multiple": []
     },
     "markdown": null,
-    "date": null
+    "date": null,
+    "schema": {
+      "title": "",
+      "description": null
+    }
   }
 }
