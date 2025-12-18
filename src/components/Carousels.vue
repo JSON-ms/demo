@@ -3,8 +3,8 @@
     <v-carousel
       v-model="slide"
       :continuous="false"
-      :show-arrows="false"
-      :hide-delimiters="data.home.presentation.length <= 1"
+      :show-arrows="true"
+      :hide-delimiters="true"
       hide-delimiter-background
       height="100%"
     >
@@ -22,7 +22,17 @@
         v-for="(presentation, presentationIdx) in data.home.presentation"
         :key="presentation.hash"
       >
-        <div style="max-width: 66%; margin: 0 auto" class="d-flex flex-column fill-height justify-center align-center text-center">
+        <div v-if="data.home.presentation[slide].type === 'youtube'" class="youtube-responsive">
+          <iframe
+            :src="getYoutubeUrl(presentation)"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          />
+        </div>
+        <div v-else-if="presentation.type === 'text'" style="max-width: 66%; margin: 0 auto" class="d-flex flex-column fill-height justify-center align-center text-center">
           <div class="text-h5 text-sm-h4 mt-4">
             {{ presentation.title[locale] || 'Undefined' }}
           </div>
@@ -45,6 +55,7 @@
 
 <script setup lang="ts">
 import {useJsonMs} from "@/plugins/jsonms";
+import type {JmsHomePresentationItems} from "@/jms/typings";
 
 const slide = ref(0);
 const { data, locale } = useJsonMs();
@@ -63,6 +74,25 @@ const slideColor = computed((): string => {
   return data.value.home.presentation[slide.value].color || 'primary';
 })
 
+function getYoutubeUrl(presentation: JmsHomePresentationItems) {
+  if (presentation.youtube) {
+    const code = getYoutubeCode(presentation.youtube);
+    return 'https://www.youtube.com/embed/' + code + '?controls=0';
+  }
+}
+
+const getYoutubeCode = (url: string): string | null => {
+  try {
+    const u = new URL(url)
+    if (u.hostname.includes('youtu.be')) return u.pathname.slice(1) || null
+    if (u.searchParams.has('v')) return u.searchParams.get('v')
+    if (u.pathname.startsWith('/embed/')) return u.pathname.split('/embed/')[1]
+    return null
+  } catch {
+    return null
+  }
+}
+
 watch(() => slide.value, () => {
   if (data.value.home.presentation[slide.value]) {
     window.parent.postMessage({
@@ -73,3 +103,16 @@ watch(() => slide.value, () => {
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.youtube-responsive iframe {
+  position: absolute;
+  inset: 0;
+  min-width: 100vw;
+  height: 100vh;
+  border: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>

@@ -11,19 +11,24 @@ export const defaultData: JmsData = {
   },
   "playground": {
     "text": null,
-    "textWithIcon": "This is a default value",
+    "textWithIcon": null,
+    "textDefault": "A default value",
     "i18nRequired": {
       "en-US": "",
       "es-MX": ""
     },
     "i18nTextarea": {
-      "en-US": "",
-      "es-MX": ""
+      "en-US": null,
+      "es-MX": null
     },
+    "textRules": null,
     "i18nRating": null,
     "conditionalSwitch": null,
-    "hiddenField1": null,
-    "hiddenField2": null,
+    "hiddenField1": 50,
+    "hiddenField2": [
+      25,
+      75
+    ],
     "list": {
       "select": null,
       "radio": null,
@@ -31,7 +36,10 @@ export const defaultData: JmsData = {
     },
     "arrays": {
       "array": [],
-      "i18nArray": []
+      "i18nArray": {
+        "en-US": [],
+        "es-MX": []
+      }
     },
     "files": {
       "file": null,
@@ -39,6 +47,10 @@ export const defaultData: JmsData = {
       "multiple": []
     },
     "markdown": null,
-    "date": null
+    "date": null,
+    "schema": {
+      "title": "",
+      "description": null
+    }
   }
 }
