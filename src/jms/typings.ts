@@ -2,7 +2,7 @@ export type JmsLocaleKey = 'en-US' | 'es-MX'
 
 export type JmsSectionKey = 'home' | 'playground'
 
-export type JmsEnumColors = 'primary' | 'secondary'
+export type JmsEnumColors = 'primary' | 'secondary' | 'white'
 
 export type JmsEnumGender = 'male' | 'female'
 
@@ -27,17 +27,19 @@ export interface JmsFile {
   meta: JmsFileMeta
 }
 
-export interface JmsHomePresentationItems {
-  title: JmsLocaleSet<string>
-  body: JmsLocaleSet<string | null>
-  cta: JmsLocaleSet<string>
+export interface JmsHomePresentationItem {
+  type: 'text' | 'youtube'
+  title: JmsLocaleSet<string> | null
+  youtube: string | null
+  body: JmsLocaleSet<string | null> | null
+  cta: JmsLocaleSet<string> | null
   color: JmsEnumColors
   commands: ('openDrawer' | 'closeDrawer' | 'openAdvanced' | 'closeAdvanced' | 'showData' | 'showSettings' | 'showDocs' | 'setMobile' | 'setDesktop' | 'hideDevice')[]
   hash: string
 }
 
 export interface JmsHome {
-  presentation: JmsHomePresentationItems[]
+  presentation: JmsHomePresentationItem[]
 }
 
 export interface JmsPlaygroundList {
@@ -46,7 +48,7 @@ export interface JmsPlaygroundList {
   checkbox: JmsEnumGender[]
 }
 
-export interface JmsPlaygroundArraysArrayItems {
+export interface JmsPlaygroundArraysArrayItem {
   firstName: string | null
   lastName: string | null
   gender: JmsEnumGender | null
@@ -54,14 +56,14 @@ export interface JmsPlaygroundArraysArrayItems {
   hash: string
 }
 
-export interface JmsPlaygroundArraysI18nArrayItems {
+export interface JmsPlaygroundArraysI18nArrayItem {
   title: string | null
   hash: string
 }
 
 export interface JmsPlaygroundArrays {
-  array: JmsPlaygroundArraysArrayItems[]
-  i18nArray: JmsLocaleSet<JmsPlaygroundArraysI18nArrayItems[]>
+  array: JmsPlaygroundArraysArrayItem[]
+  i18nArray: JmsLocaleSet<JmsPlaygroundArraysI18nArrayItem[]>
 }
 
 export interface JmsPlaygroundFiles {
@@ -70,12 +72,19 @@ export interface JmsPlaygroundFiles {
   multiple: JmsFile[]
 }
 
+export interface JmsPlaygroundSchema {
+  title: string
+  description: string | null
+}
+
 export interface JmsPlayground {
   text: string | null
   textWithIcon: string | null
-  i18nRequired: JmsLocaleSet<string>
-  i18nTextarea: JmsLocaleSet<string | null>
-  i18nRating: JmsLocaleSet<number | null>
+  textDefault: string | null
+  i18nRequired: JmsLocaleSet<string> | null
+  i18nTextarea: JmsLocaleSet<string | null> | null
+  textRules: string | null
+  i18nRating: JmsLocaleSet<number | null> | null
   conditionalSwitch: undefined | null
   hiddenField1: number | null
   hiddenField2: [number, number] | null
@@ -84,6 +93,7 @@ export interface JmsPlayground {
   files: JmsPlaygroundFiles
   markdown: string | null
   date: Date | null
+  schema: JmsPlaygroundSchema
 }
 
 export interface JmsData {
