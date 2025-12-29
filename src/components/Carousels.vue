@@ -22,12 +22,42 @@
         v-for="(presentation, presentationIdx) in data.home.presentation"
         :key="presentation.hash"
       >
-        <div v-if="data.home.presentation[slide].type === 'youtube'" class="youtube-responsive">
+        <div
+          v-if="presentation.type === 'media'"
+          class="media-responsive"
+          @mousemove="onMouseMoveVideo"
+        >
+          <video
+            ref="video"
+            controlsList="nodownload"
+            disablepictureinpicture
+            preload="auto"
+            @play="onVideoPlay"
+            @pause="onVideoPause"
+            @end="onVideoEnd"
+            @loadedmetadata="onLoadedMetadata"
+          >
+            <source
+              :src="getFilePath(presentation.media)"
+              :type="presentation.media?.meta.type"
+            >
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-btn">
+            <v-fade-transition>
+              <v-btn v-if="hoveringVideo" :variant="videoPlaying ? 'tonal' : 'elevated'" color="primary" icon size="x-large" @click="toggleVideo">
+                <v-icon v-if="!videoPlaying" icon="mdi-play" />
+                <v-icon v-else icon="mdi-pause" />
+              </v-btn>
+            </v-fade-transition>
+          </div>
+        </div>
+        <div v-if="presentation.type === 'youtube'" class="youtube-responsive">
           <iframe
             :src="getYoutubeUrl(presentation)"
             title="YouTube video player"
             frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
           />
@@ -55,10 +85,13 @@
 
 <script setup lang="ts">
 import {useJsonMs} from "@/plugins/jsonms";
-import type {JmsHomePresentationItems} from "@/jms/typings";
+import type {JmsHomePresentationItem} from "@/jms/typings";
 
 const slide = ref(0);
-const { data, locale } = useJsonMs();
+const hoveringVideo = ref(true);
+const video = ref<HTMLVideoElement[]>([])
+const videoPlaying = ref(false);
+const { data, locale, getFilePath } = useJsonMs();
 
 const onCtaClick = () => {
   slide.value++;
@@ -74,7 +107,48 @@ const slideColor = computed((): string => {
   return data.value.home.presentation[slide.value].color || 'primary';
 })
 
-function getYoutubeUrl(presentation: JmsHomePresentationItems) {
+function toggleVideo() {
+  if (video.value.length > 0) {
+    videoPlaying.value = !videoPlaying.value;
+    const player = video.value[video.value.length - 1];
+    videoPlaying.value ? player.play() : player.pause();
+  }
+}
+
+let mouseMoveVideoTimeout: any = null;
+function onMouseMoveVideo() {
+  hoveringVideo.value = true;
+  clearTimeout(mouseMoveVideoTimeout);
+  mouseMoveVideoTimeout = setTimeout(() => {
+    if (videoPlaying.value) {
+      hoveringVideo.value = false;
+    }
+  }, 2000);
+}
+
+const onLoadedMetadata = () => {
+  if (!video.value) return
+  const player = video.value[video.value.length - 1];
+  player.currentTime = 0.01
+}
+
+function onVideoPlay() {
+  videoPlaying.value = true;
+  hoveringVideo.value = false;
+}
+
+function onVideoPause() {
+  videoPlaying.value = false;
+}
+
+function onVideoEnd() {
+  videoPlaying.value = false;
+  if (video.value.length > 0) {
+    video.value[video.value.length - 1].currentTime = 0;
+  }
+}
+
+function getYoutubeUrl(presentation: JmsHomePresentationItem) {
   if (presentation.youtube) {
     const code = getYoutubeCode(presentation.youtube);
     return 'https://www.youtube.com/embed/' + code + '?controls=0&rel=0';
@@ -105,6 +179,25 @@ watch(() => slide.value, () => {
 </script>
 
 <style lang="scss" scoped>
+.media-responsive {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.media-responsive video {
+  height: 100vh;
+  min-width: 100%;
+  float: left;
+}
+.media-responsive {
+  .video-btn {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
 .youtube-responsive iframe {
   position: absolute;
   inset: 0;
