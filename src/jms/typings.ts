@@ -31,6 +31,7 @@ export interface JmsHomePresentationItem {
   type: 'text' | 'media' | 'youtube'
   title: JmsLocaleSet<string> | null
   media: JmsFile | null
+  poster: JmsFile | null
   youtube: string | null
   body: JmsLocaleSet<string | null> | null
   cta: JmsLocaleSet<string> | null
